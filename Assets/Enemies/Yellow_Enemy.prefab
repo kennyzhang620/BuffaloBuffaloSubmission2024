@@ -126,5 +126,5 @@ MonoBehaviour:
   AttackPower: 5
   Health: 1
   Speed: 1
-  SpawnRate: 0.1
+  SpawnRate: -0.05814261
   EnemyColour: {r: 1, g: 1, b: 0.044077396, a: 0}
