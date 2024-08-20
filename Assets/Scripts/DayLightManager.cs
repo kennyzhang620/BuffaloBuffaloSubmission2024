@@ -24,7 +24,7 @@ to .2 ● Night
      */
     public EnemyPool EnemyPool;
     public TimesofDay SelectedTimesofDay;
-    public Material SunMat;
+    public Material[] SunMat; // To simulate day night cycle
 
     void ApplyModifiers(TimesofDay times)
     {
@@ -87,11 +87,6 @@ to .2 ● Night
     // Start is called before the first frame update
     void Start()
     {
-        Shader sunS = SunMat.shader;
-        print(sunS.FindPropertyIndex("Atmosphere Thickness"));
-
-        Shader.SetGlobalFloat("Atmosphere Thickness", 2f);
-        
         int rval = Random.Range(0, 75) / 25;
 
         switch (rval)
@@ -109,6 +104,9 @@ to .2 ● Night
                 break;
         }
 
+        if (SunMat.Length == 3)
+            RenderSettings.skybox = SunMat[rval];
+        
         ApplyModifiers(SelectedTimesofDay);
     }
 
